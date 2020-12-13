@@ -2,9 +2,9 @@
   <div id="app">
     <vk-navbar>
       <vk-navbar-nav>
-        <vk-navbar-nav-item title="Kontraktorzy" href active></vk-navbar-nav-item>
-        <vk-navbar-nav-item title="Departamenty" href></vk-navbar-nav-item>
-        <vk-navbar-nav-item title="Kontakty" href></vk-navbar-nav-item>
+        <router-link tag="li" :to="{name: 'Contractors'}"><a href="">KONTRAHENCI</a> </router-link>
+        <router-link tag="li" :to="{name: 'Contractors'}"><a href="">DEPARTAMENTY</a> </router-link>
+        <router-link tag="li" :to="{name: 'Contractors'}"><a href="">KONTAKTY</a> </router-link>
       </vk-navbar-nav>
     </vk-navbar>
     <router-view />

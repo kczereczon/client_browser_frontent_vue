@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 import ContractorsMain from "../views/contractors/Main.vue";
+import ContractorsEdit from "../views/contractors/Edit.vue";
+import ContractorsCreate from "../views/contractors/Create.vue";
 
 Vue.use(VueRouter)
 
@@ -9,7 +11,22 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    redirect: {name: 'Contractors'}
+  },
+  {
+    path: '/contractors',
+    name: 'Contractors',
     component: ContractorsMain
+  },
+  {
+    path: '/contractors/edit/:id',
+    name: 'ContractorsEdit',
+    component: ContractorsEdit
+  },
+  {
+    path: '/contractors/create',
+    name: 'ContractorsCreate',
+    component: ContractorsCreate
   },
   {
     path: '/about',

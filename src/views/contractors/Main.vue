@@ -15,15 +15,19 @@
         </vk-grid>
     </div>
     <div v-if="info.data" class="uk-card uk-margin-top uk-card-default uk-card-body">
+      <div class="uk-card-title uk-text-right"><vk-button type="secondary" @click="openCreate">NOWY KONTRAKTOR</vk-button></div>
       <vk-table :data="info.data" justified>
         <vk-table-column
           class="uk-width-large"
           title="Nazwa"
           cell="name"
-        ></vk-table-column>
+        ><vk-button slot-scope="{ cell }" @click="openDetails(cell)" type="text">{{cell}}</vk-button></vk-table-column>
         <vk-table-column title="NIP" cell="nip"></vk-table-column>
-        <vk-table-column cell="city">
-          <vk-button slot-scope="">EDYTUJ</vk-button>
+        <vk-table-column cell="id">
+          <vk-button type="primary" slot-scope="{ cell }" @click="openEdit(cell)">EDYTUJ</vk-button>
+        </vk-table-column>
+        <vk-table-column cell="id">
+          <vk-button type="danger" slot-scope="{ cell }" @click="remove(cell)">USUŃ</vk-button>
         </vk-table-column>
       </vk-table>
       <vk-pagination
@@ -61,7 +65,21 @@ export default {
         const response = await axios.get("http://127.0.0.1:8000/api/web/contractor", {params: params});
         this.info = response.data;
     },
-    
+    openEdit: function(id) {
+      this.$router.push({name: "ContractorsEdit", params: {id: id}});
+    },
+    remove: function(id) {
+      if(confirm("Czy napewno chcesz usunąć kontraktora?")) {
+        this.deleteContractor(id);
+      }
+    },
+    deleteContractor: async function(id) {
+      await axios.delete("http://127.0.0.1:8000/api/web/contractor/"+id);
+      this.loadConstructors(this.page);
+    },
+    openCreate: function() {
+      this.$router.push({name: "ContractorsCreate"});
+    }
   },
   watch: {
     page: function (newPage){
