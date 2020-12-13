@@ -41,7 +41,7 @@ export default {
           data
         );
         if (response.data) {
-          this.getContractor();
+          this.$router.push({name: "ContractorsDetails", params: {id: this.contractor.id}})
         }
       } catch (error) {
           this.errors = error.response.data.errors;

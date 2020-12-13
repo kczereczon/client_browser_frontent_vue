@@ -21,7 +21,7 @@
           class="uk-width-large"
           title="Nazwa"
           cell="name"
-        ><vk-button slot-scope="{ cell }" @click="openDetails(cell)" type="text">{{cell}}</vk-button></vk-table-column>
+        ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
         <vk-table-column title="NIP" cell="nip"></vk-table-column>
         <vk-table-column cell="id">
           <vk-button type="primary" slot-scope="{ cell }" @click="openEdit(cell)">EDYTUJ</vk-button>
@@ -79,6 +79,9 @@ export default {
     },
     openCreate: function() {
       this.$router.push({name: "ContractorsCreate"});
+    },
+    openDetails: function(id) {
+      this.$router.push({name: "ContractorsDetails", params: {id: id}});
     }
   },
   watch: {

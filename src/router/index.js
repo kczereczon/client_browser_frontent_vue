@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import ContractorsMain from "../views/contractors/Main.vue";
 import ContractorsEdit from "../views/contractors/Edit.vue";
 import ContractorsCreate from "../views/contractors/Create.vue";
+import ContractorsDetails from "../views/contractors/Details.vue";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/contractors/create',
     name: 'ContractorsCreate',
     component: ContractorsCreate
+  },
+  {
+    path: '/contractors/:id',
+    name: 'ContractorsDetails',
+    component: ContractorsDetails
   },
   {
     path: '/about',

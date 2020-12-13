@@ -54,7 +54,7 @@ export default {
       this.$emit("submit");
       console.log(this.departament);
       try {
-        await axios.post(
+        const response = await axios.post(
           "http://127.0.0.1:8000/api/web/contractor",
           {
             departament: this.departament,
@@ -62,7 +62,7 @@ export default {
             contractor: this.contractor,
           }
         );
-        this.$router.push({ name: "Contractors" });
+        this.$router.push({ name: "ContractorsDetails" , params: {id: response.data.id}});
       } catch (error) {
         this.errors = error.response.data.errors;
       }
