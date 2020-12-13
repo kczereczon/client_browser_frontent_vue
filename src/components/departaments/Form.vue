@@ -17,6 +17,7 @@
           type="text"
           placeholder="Nazwa oddziału"
           v-model="form.name"
+          @keypress="removeError('name')"
         />
         <p v-for="item in getError('name')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -37,6 +38,7 @@
           type="text"
           placeholder="Ulica wraz z numerem budynku"
           v-model="form.street"
+          @keypress="removeError('street')"
         />
         <p v-for="item in getError('street')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -57,6 +59,7 @@
           type="text"
           placeholder="Miasto oddziału"
           v-model="form.city"
+          @keypress="removeError('city')"
         />
         <p v-for="item in getError('city')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -77,6 +80,7 @@
           type="text"
           placeholder="Kod pocztowy"
           v-model="form.postal_code"
+          @keypress="removeError('postal_code')"
         />
         <p v-for="item in getError('postal_code')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -97,6 +101,7 @@
           type="text"
           placeholder="Kraj oddziału"
           v-model="form.country"
+          @keypress="removeError('country')"
         />
         <p v-for="item in getError('country')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -153,6 +158,13 @@ export default {
     getError: function (field) {
       return this.errors[field] || this.errors["departament." + field];
     },
+    removeError: function(field) {
+      if(this.errors[field]) {
+        delete this.errors[field];
+      } else if(this.errors["departament." + field]) {
+        delete this.errors["departament." + field];
+      }
+    }
   },
 };
 </script>

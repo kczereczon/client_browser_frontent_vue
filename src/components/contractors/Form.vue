@@ -20,6 +20,7 @@
             id="form-stacked-text"
             type="text"
             placeholder="Nazwa twojej firmy"
+            @keypress="removeError('name')"
           />
           <p
             v-for="item in getError('name')"
@@ -48,6 +49,7 @@
             id="form-stacked-text"
             type="text"
             placeholder="Nip firmy"
+            @keypress="removeError('nip')"
           />
           <p
             v-for="item in getError('nip')"
@@ -85,6 +87,13 @@ export default {
     getError: function (field) {
       return this.errors[field] || this.errors["contractor." + field];
     },
+    removeError: function(field) {
+      if(this.errors[field]) {
+        delete this.errors[field];
+      } else if(this.errors["contractor." + field]) {
+        delete this.errors["contractor." + field];
+      }
+    }
   },
 };
 </script>

@@ -13,6 +13,8 @@
           }"
           type="text"
           placeholder="Imie nowego kontaktu"
+          v-model="form.name"
+          @keypress="removeError('name')"
         />
         <p v-for="item in getError('name')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -29,6 +31,8 @@
           }"
           type="text"
           placeholder="Nazwisko kontaktu"
+          v-model="form.last_name"
+          @keypress="removeError('last_name')"
         />
          <p v-for="item in getError('last_name')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -45,6 +49,8 @@
           }"
           type="text"
           placeholder="Adres email"
+          v-model="form.email"
+          @keypress="removeError('email')"
         />
          <p v-for="item in getError('email')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -61,6 +67,8 @@
           }"
           type="text"
           placeholder="Numer telefonu"
+          v-model="form.phone"
+          @keypress="removeError('phone')"
         />
          <p v-for="item in getError('phone')" :key="item" class="uk-text-danger">
           {{ item }}
@@ -105,6 +113,13 @@ export default {
     getError: function (field) {
       return this.errors[field] || this.errors["contact." + field];
     },
+    removeError: function(field) {
+      if(this.errors[field]) {
+        delete this.errors[field];
+      } else if(this.errors["contact." + field]) {
+        delete this.errors["contact." + field];
+      }
+    }
   },
 };
 </script>
