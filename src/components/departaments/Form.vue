@@ -28,7 +28,7 @@
           :class="{
             'uk-form-danger': this.getError('street'),
           }"
-          >Ulica i numer budunku</label
+          >Ulica i numer budynku</label
         >
         <input
           :class="{
@@ -113,14 +113,16 @@
             'uk-form-danger':
               this.getError('contractor_id'),
           }"
-          >Kontraktor</label
+          >Kontrahent</label
         >
         <select
           class="uk-select"
           type="text"
           placeholder="50"
           v-model="form.contractor_id"
-        ></select>
+        ><option
+            value="1"
+        ></option></select>
         <p v-for="item in getError('contractor_id')" :key="item" class="uk-text-danger">
           {{ item }}
         </p>
@@ -164,6 +166,9 @@ export default {
       } else if(this.errors["departament." + field]) {
         delete this.errors["departament." + field];
       }
+    },
+    getContractors: function(){
+      
     }
   },
 };
