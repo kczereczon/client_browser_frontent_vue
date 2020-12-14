@@ -5,6 +5,10 @@ import ContractorsMain from "../views/contractors/Main.vue";
 import ContractorsEdit from "../views/contractors/Edit.vue";
 import ContractorsCreate from "../views/contractors/Create.vue";
 import ContractorsDetails from "../views/contractors/Details.vue";
+import ContactsMain from "../views/contacts/Main.vue";
+import ContactsEdit from "../views/contacts/Edit.vue";
+import ContactsCreate from "../views/contacts/Create.vue";
+import ContactsDetails from "../views/contacts/Details.vue";
 
 Vue.use(VueRouter)
 
@@ -33,6 +37,26 @@ const routes = [
     path: '/contractors/:id',
     name: 'ContractorsDetails',
     component: ContractorsDetails
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: ContactsMain
+  },
+  {
+    path: '/contacts/edit/:id',
+    name: 'ContactsEdit',
+    component: ContactsEdit
+  },
+  {
+    path: '/contacts/create',
+    name: 'ContactsCreate',
+    component: ContactsCreate
+  },
+  {
+    path: '/contacts/:id',
+    name: 'ContactsDetails',
+    component: ContactsDetails
   },
   {
     path: '/about',
