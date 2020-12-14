@@ -69,7 +69,7 @@ export default {
       this.$router.push({name: "ContractorsEdit", params: {id: id}});
     },
     remove: function(id) {
-      if(confirm("Czy napewno chcesz usunąć kontraktora?")) {
+      if(confirm("Czy napewno chcesz usunąć kontrahenta?")) {
         this.deleteContractor(id);
       }
     },

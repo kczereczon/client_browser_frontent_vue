@@ -1,47 +1,47 @@
 <template>
   <div class="uk-container">
-    <ContractorsForm
+    <DepartamentsForm
       :hideSubmit="false"
       :form="contractor"
       @submit="onSubmit"
-      :title="'Edytuj kontrahenta'"
+      :title="'Edytuj departament'"
       :errors="errors"
-    ></ContractorsForm>
+    ></DepartamentsForm>
   </div>
 </template>
 
 <script>
-import ContractorsForm from "../../components/contractors/Form";
+import DepartamentsForm from "../../components/departaments/Form";
 import axios from "axios";
 
 export default {
   data() {
     return {
-      contractor: null,
+      departament: null,
       errors: {}
     };
   },
   components: {
-    ContractorsForm,
+    DepartamentsForm,
   },
   beforeMount() {
-    this.getContractor();
+    this.getDepartament();
   },
   methods: {
-    getContractor: async function () {
+    getDepartament: async function () {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/contractor/" + this.$route.params.id
+        "http://127.0.0.1:8000/api/web/departament/" + this.$route.params.id
       );
-      this.contractor = response.data;
+      this.departament = response.data;
     },
     onSubmit: async function (data) {
       try {
         const response = await axios.put(
-          "http://127.0.0.1:8000/api/web/contractor/" + this.$route.params.id,
+          "http://127.0.0.1:8000/api/web/departament/" + this.$route.params.id,
           data
         );
         if (response.data) {
-          this.$router.push({name: "ContractorsDetails", params: {id: this.contractor.id}})
+          this.$router.push({name: "DepartamentsDetails", params: {id: this.departament.id}})
         }
       } catch (error) {
           this.errors = error.response.data.errors;

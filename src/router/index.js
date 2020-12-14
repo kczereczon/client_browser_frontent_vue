@@ -5,6 +5,10 @@ import ContractorsMain from "../views/contractors/Main.vue";
 import ContractorsEdit from "../views/contractors/Edit.vue";
 import ContractorsCreate from "../views/contractors/Create.vue";
 import ContractorsDetails from "../views/contractors/Details.vue";
+import DepartamentsMain from "../views/departaments/Main.vue";
+import DepartamentsEdit from "../views/departaments/Edit.vue";
+import DepartamentsCreate from "../views/departaments/Create.vue";
+import DepartamentsDetails from "../views/departaments/Details.vue";
 
 Vue.use(VueRouter)
 
@@ -33,6 +37,26 @@ const routes = [
     path: '/contractors/:id',
     name: 'ContractorsDetails',
     component: ContractorsDetails
+  },
+  {
+    path: '/departaments',
+    name: 'Departaments',
+    component: DepartamentsMain
+  },
+  {
+    path: '/departaments/edit/:id',
+    name: 'DepartamentsEdit',
+    component: DepartamentsEdit
+  },
+  {
+    path: '/departaments/create',
+    name: 'DepartamentsCreate',
+    component: DepartamentsCreate
+  },
+  {
+    path: '/departaments/:id',
+    name: 'DepartamentsDetails',
+    component: DepartamentsDetails
   },
   {
     path: '/about',
