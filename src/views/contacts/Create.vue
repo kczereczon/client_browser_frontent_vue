@@ -1,17 +1,5 @@
 <template>
   <div class="uk-container">
-    <ContractorsForm
-      :hideSubmit="true"
-      @submit="setContractorData"
-      :title="'Dane kontrahenta'"
-      :errors="this.errors ? this.errors : {}"
-    ></ContractorsForm>
-    <DepartamentsForm
-      :hideSubmit="true"
-      @submit="setDepartmentData"
-      :title="'Dane oddziału'"
-      :errors="this.errors ? this.errors : {}"
-    ></DepartamentsForm>
     <ContactsForm
       :hideSubmit="true"
       :hideRelation="false"
@@ -30,23 +18,17 @@
 </template>
 
 <script>
-import ContractorsForm from "../../components/contractors/Form";
-import DepartamentsForm from "../../components/departaments/Form";
 import ContactsForm from "../../components/contacts/Form";
 import axios from "axios";
 
 export default {
   data() {
     return {
-      contractor: null,
-      departament: null,
       contact: null,
       errors: null
     };
   },
   components: {
-    ContractorsForm,
-    DepartamentsForm,
     ContactsForm,
   },
   methods: {

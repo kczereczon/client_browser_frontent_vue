@@ -28,7 +28,22 @@
           title="Nazwa"
           cell="name"
         ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
-        <vk-table-column title="NIP" cell="nip"></vk-table-column>
+         <vk-table-column
+          class="uk-width-large"
+          title="Nazwisko"
+          cell="last_name"
+        ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
+         <vk-table-column
+          class="uk-width-large"
+          title="Email"
+          cell="email"
+        ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
+         <vk-table-column
+          class="uk-width-large"
+          title="Telefon"
+          cell="phone"
+        ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
+        
         <vk-table-column cell="id">
           <vk-button type="primary" slot-scope="{ cell }" @click="openEdit(cell)">EDYTUJ</vk-button>
         </vk-table-column>

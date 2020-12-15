@@ -79,8 +79,7 @@
             'uk-form-danger': errors.phone || errors['contact.phone'],
           }">Odział</label>
         <select class="uk-select" type="text" placeholder="50" name='departaments.id'>
-          @foreach($contacts->departaments as $departament)
-          <option  value="1">{{$departament=>name}}</option>
+          <option v-for="departament in departaments" :key="departament"  :value="departament.id">{{departament.name}}</option>
         </select>
       </div>
     </vk-grid>
@@ -105,15 +104,20 @@ export default {
         last_name: null,
         email: null,
         phone: null,
-        departament_id: null,
-        nip: null,
+        departament_id: null
       }),
     },
     hideSubmit: { type: Boolean, default: () => true },
     hideRelation: { type: Boolean, default: () => false },
     errors: { type: Object, default: () => ({}) },
   },
+  data: function(){
+    return {
+      departaments: {}
+    }
+  },
   created: function () {
+    this.getDepartaments();
     this.$parent.$on("submit", this.submit);
   },
   methods: {
@@ -130,8 +134,9 @@ export default {
         delete this.errors["contact." + field];
       }
     },
-    getDepartament: async function(){
-      await axios.get('/api/web/departament/all')
+    getDepartaments: async function(){
+      const response = await axios.get('http://127.0.0.1:8000/api/web/departament/all');
+      this.departaments = response.data;
     }
   },
 };

@@ -2,6 +2,7 @@
   <div class="uk-container">
     <ContactsForm
       :hideSubmit="false"
+      :hideRelation="false"
       :form="contact"
       @submit="onSubmit"
       :title="'Edytuj kontakt'"
