@@ -53,7 +53,7 @@ export default {
             contact: this.contact,
           }
         );
-        this.$router.push({name: "DepartamentsDetails" , params: {id: response.data.name}});
+        this.$router.push({name: "DepartamentsDetails" , params: {id: response.data.id}});
       } catch (error) {
         this.errors = error.response.data.errors;
       }
