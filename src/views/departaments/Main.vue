@@ -44,13 +44,13 @@
         <vk-table-column
           class="uk-width-auto"
           title="Kraj"
-          cell="city"
+          cell="country"
         ></vk-table-column>
         <vk-table-column
           class="uk-width-auto"
           title="Kontrahent"
-          cell="contractor_id"
-        ></vk-table-column>
+          cell="contractor.name"
+        ><vk-button slot-scope="{ cell, row }" @click="openContractorDetails(row.contractor.id)" type="text">{{cell}}</vk-button></vk-table-column>
         <vk-table-column cell="id">
           <vk-button type="primary" slot-scope="{ cell }" @click="openEdit(cell)">EDYTUJ</vk-button>
         </vk-table-column>
@@ -110,6 +110,9 @@ export default {
     },
     openDetails: function(id) {
       this.$router.push({name: "DepartamentsDetails", params: {id: id}});
+    },
+    openContractorDetails: function(id) {
+      this.$router.push({name: "ContractorsDetails", params: {id: id}});
     }
   },
   watch: {

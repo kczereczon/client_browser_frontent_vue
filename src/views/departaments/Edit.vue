@@ -2,7 +2,8 @@
   <div class="uk-container">
     <DepartamentsForm
       :hideSubmit="false"
-      :form="contractor"
+      :hideRelation="false"
+      :form="departament"
       @submit="onSubmit"
       :title="'Edytuj departament'"
       :errors="errors"
