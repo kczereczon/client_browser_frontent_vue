@@ -78,13 +78,22 @@
         <label :class="{
             'uk-form-danger': errors.phone || errors['contact.phone'],
           }">Odział</label>
-        <select class="uk-select" type="text" placeholder="50"></select>
+        <select class="uk-select" type="text" placeholder="50" name='departaments.id'>
+          <option v-for="departament in departaments" :key="departament"  :value="departament.id">{{departament.name}}</option>
+        </select>
       </div>
     </vk-grid>
+    <div v-if="!hideSubmit" class="uk-margin">
+        <div class="uk-form-controls">
+          <vk-button @click="submit">ZAPISZ</vk-button>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios'
 export default {
   props: {
     title: String,
@@ -95,15 +104,20 @@ export default {
         last_name: null,
         email: null,
         phone: null,
-        departament_id: null,
-        nip: null,
+        departament_id: null
       }),
     },
     hideSubmit: { type: Boolean, default: () => true },
     hideRelation: { type: Boolean, default: () => false },
     errors: { type: Object, default: () => ({}) },
   },
+  data: function(){
+    return {
+      departaments: {}
+    }
+  },
   created: function () {
+    this.getDepartaments();
     this.$parent.$on("submit", this.submit);
   },
   methods: {
@@ -119,6 +133,10 @@ export default {
       } else if(this.errors["contact." + field]) {
         delete this.errors["contact." + field];
       }
+    },
+    getDepartaments: async function(){
+      const response = await axios.get('http://127.0.0.1:8000/api/web/departament/all');
+      this.departaments = response.data;
     }
   },
 };
