@@ -116,22 +116,34 @@
           >Kontrahent</label
         >
         <select
-          class="uk-select"
+          :class="{
+            'uk-select': true,
+            'uk-form-danger': this.getError('contractor_id'),
+          }"
           type="text"
           placeholder="50"
           v-model="form.contractor_id"
+           @change="removeError('contractor_id')"
         ><option
-            value="1"
-        ></option></select>
+            v-for="contractor in contractors"
+            :key="contractor"
+            :value="contractor.id"
+        >{{contractor.name}}</option></select>
         <p v-for="item in getError('contractor_id')" :key="item" class="uk-text-danger">
           {{ item }}
         </p>
       </div>
     </vk-grid>
+      <div v-if="!hideSubmit" class="uk-margin">
+        <div class="uk-form-controls">
+          <vk-button @click="submit">ZAPISZ</vk-button>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: {
     title: String,
@@ -151,7 +163,13 @@ export default {
     hideRelation: { type: Boolean, default: () => true },
   },
   created: function () {
+    this.getContractors();
     this.$parent.$on("submit", this.submit);
+  },
+  data: function(){
+    return {
+      contractors: {}
+    }
   },
   methods: {
     submit: function () {
@@ -167,8 +185,10 @@ export default {
         delete this.errors["departament." + field];
       }
     },
-    getContractors: function(){
-      
+    getContractors: async function(){
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/contractor/");
+      this.contractors = response.data;
     }
   },
 };

@@ -32,9 +32,9 @@ import axios from "axios";
 export default {
   data() {
     return {
-      departament: null,
-      contact: null,
-      errors: null
+      departament: {},
+      contact: {},
+      errors: {}
     };
   },
   components: {
@@ -47,13 +47,13 @@ export default {
       console.log(this.departament);
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/web/departament",
+          "http://127.0.0.1:8000/api/web/departament/",
           {
             departament: this.departament,
             contact: this.contact,
           }
         );
-        this.$router.push({ name: "DepartamentsDetails" , params: {id: response.data.id}});
+        this.$router.push({name: "DepartamentsDetails" , params: {id: response.data.name}});
       } catch (error) {
         this.errors = error.response.data.errors;
       }
