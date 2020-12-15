@@ -93,6 +93,7 @@ export default {
         "http://127.0.0.1:8000/api/web/contact/" + this.id
       );
       this.contact = response.data;
+      this.$emit("gotContact", response.data)
     },
     openEdit: function(id) {
       this.$router.push({name: "ContactsEdit", params: {id: id}});
