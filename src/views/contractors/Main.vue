@@ -1,7 +1,7 @@
 <template>
   <div class="uk-container">
     <div class="uk-card uk-margin-top uk-card-default uk-card-body">
-      <h3 class="uk-card-title">Lista kontraktorów</h3>
+      <h3 class="uk-card-title">Lista kontrahenta</h3>
         <vk-grid>
           <div class="uk-width-expand@m">
             <input v-model="params.name" class="uk-input" type="text" placeholder="Nazwa firmy" />
@@ -15,7 +15,7 @@
         </vk-grid>
     </div>
     <div v-if="info.data" class="uk-card uk-margin-top uk-card-default uk-card-body">
-      <div class="uk-card-title uk-text-right"><vk-button type="secondary" @click="openCreate">NOWY KONTRAKTOR</vk-button></div>
+      <div class="uk-card-title uk-text-right"><vk-button type="secondary" @click="openCreate">NOWY KONTRAHENT</vk-button></div>
       <vk-table :data="info.data" justified>
         <vk-table-column
           class="uk-width-large"

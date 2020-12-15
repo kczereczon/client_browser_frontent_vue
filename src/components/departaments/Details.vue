@@ -1,6 +1,6 @@
 <template>
     <div class="uk-card uk-margin-top uk-card-default uk-card-body">
-      <h3 class="uk-card-title">Detale użytkownika</h3>
+      <h3 class="uk-card-title">Detale oddziału</h3>
       <vk-grid class="uk-margin-top">
           <div class="uk-width-1-5">
               <span class="uk-text-bold">

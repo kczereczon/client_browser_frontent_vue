@@ -5,7 +5,7 @@
       :hideRelation="false"
       :form="departament"
       @submit="onSubmit"
-      :title="'Edytuj departament'"
+      :title="'Edytuj oddział'"
       :errors="errors"
     ></DepartamentsForm>
   </div>

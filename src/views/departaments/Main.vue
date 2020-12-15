@@ -1,7 +1,7 @@
 <template>
   <div class="uk-container">
     <div class="uk-card uk-margin-top uk-card-default uk-card-body">
-      <h3 class="uk-card-title">Lista departamentów</h3>
+      <h3 class="uk-card-title">Lista oddziałów</h3>
         <vk-grid>
           <div class="uk-width-expand@m">
             <input v-model="params.name" class="uk-input" type="text" placeholder="Nazwa oddziału" />
