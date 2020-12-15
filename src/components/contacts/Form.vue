@@ -76,11 +76,17 @@
       </div>
       <div v-if="!hideRelation" class="uk-width-1-1@s">
         <label :class="{
-            'uk-form-danger': errors.phone || errors['contact.phone'],
+            'uk-form-danger':  this.getError('departament_id'),
           }">Odział</label>
-        <select class="uk-select" type="text" placeholder="50" name='departaments.id'>
+        <select :class="{
+            'uk-select': true,
+            'uk-form-danger': this.getError('departament_id'),
+          }" type="text" placeholder="50" v-model='form.departament_id'>
           <option v-for="departament in departaments" :key="departament"  :value="departament.id">{{departament.name}}</option>
         </select>
+        <p v-for="item in getError('departament_id')" :key="item" class="uk-text-danger">
+          {{ item }}
+        </p>
       </div>
     </vk-grid>
     <div v-if="!hideSubmit" class="uk-margin">
