@@ -72,10 +72,10 @@
                   {{departament.updated_at | formatDate}}
               </span>
           </div>
-          <div class="uk-width-auto">
+          <div class="uk-width-auto" v-if="!hideButtons">
               <vk-button type="primary" @click="openEdit(departament.id)">EDYTUJ</vk-button>
           </div>
-          <div class="uk-width-auto">
+          <div class="uk-width-auto" v-if="!hideButtons">
               <vk-button type="danger" @click="remove(departament.id)">USUŃ</vk-button>
           </div>
       </vk-grid>
@@ -88,6 +88,7 @@ import axios from "axios";
 export default {
   props: {
     id: Number,
+    hideButtons: {type:Boolean, default: () => (false) },
   },
   data: function () {
     return {
@@ -102,7 +103,8 @@ export default {
       const response = await axios.get(
         "http://127.0.0.1:8000/api/web/departament/" + this.id
       );
-      this.departament= response.data;
+      this.departament= response.data;      
+      this.$emit("gotDepartament", response.data)
     },
     openEdit: function(id) {
       this.$router.push({name: "DepartamentsEdit", params: {id: id}});

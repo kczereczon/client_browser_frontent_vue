@@ -62,10 +62,10 @@
                   {{contact.updated_at | formatDate}}
               </span>
           </div>
-          <div class="uk-width-auto">
+          <div class="uk-width-auto" v-if="!hideButtons">
               <vk-button type="primary" @click="openEdit(contact.id)">EDYTUJ</vk-button>
           </div>
-          <div class="uk-width-auto">
+          <div class="uk-width-auto" v-if="!hideButtons">
               <vk-button type="danger" @click="remove(contact.id)">USUŃ</vk-button>
           </div>
       </vk-grid>
@@ -78,6 +78,7 @@ import axios from "axios";
 export default {
   props: {
     id: Number,
+    hideButtons: {type:Boolean, default: () => (false) },
   },
   data: function () {
     return {

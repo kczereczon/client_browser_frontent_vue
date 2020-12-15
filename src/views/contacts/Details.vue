@@ -1,28 +1,45 @@
 <template>
     <div class="uk-container">
         <ContactDetails :id="id" @gotContact="loadContact"/>
-        <ContractorDetails :id="contact.departament.contractor_id" :hideButtons="true" v-if="contact"/>
+        <ContractorDetails :id="contact.departament.contractor_id" :hideButtons="true" v-if="contact"/>        
+        <DepartamentsSmallList :id="id" :title="'Siedziba Kontaktu'" :info="departaments" @pageChanged="loadDepartaments"/>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 import ContactDetails from "../../components/contacts/Details";
 import ContractorDetails from "../../components/contractors/Details";
+import DepartamentsSmallList from "../../components/departaments/SmallList";
 
 export default {
     data () {
-        return {contact:null};
+        return{
+            contact:null,
+            departaments:null};
     },
     components: {
         ContactDetails,
         ContractorDetails,
+        DepartamentsSmallList
 
     },
     methods: {
         loadContact:function(data){
             this.contact=data;
-        }
+        },
+        loadDepartaments: async function (newPage) {
+      const params = { ...this.params, page: newPage };
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/web/departament/contact/" + this.id,
+        { params: params }
+      );
+      this.departaments = response.data;
     },
+    },
+    beforeMount() {
+    this.loadDepartaments();
+  },
     computed: {
         id: function() {
             return parseInt(this.$route.params.id);
