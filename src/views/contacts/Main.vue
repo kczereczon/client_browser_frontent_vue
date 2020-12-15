@@ -43,6 +43,11 @@
           title="Telefon"
           cell="phone"
         ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
+         <vk-table-column
+          class="uk-width-large"
+          title="Oddział"
+          cell="departament.name"
+        ><vk-button slot-scope="{ cell, row }" @click="openDetails(row.id)" type="text">{{cell}}</vk-button></vk-table-column>
         
         <vk-table-column cell="id">
           <vk-button type="primary" slot-scope="{ cell }" @click="openEdit(cell)">EDYTUJ</vk-button>
