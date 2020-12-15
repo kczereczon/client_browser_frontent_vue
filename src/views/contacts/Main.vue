@@ -15,9 +15,6 @@
           <div class="uk-width-auto@m">
             <input v-model="params.phone" class="uk-input" type="text" placeholder="Telefon" />
           </div>
-          <div class="uk-width-expand@m">
-            <input v-model="params.departament.name" class="uk-input" type="text" placeholder="Oddział" />
-          </div>
           <div class="uk-width-auto@m">
             <button @click="loadContacts(1)" class="uk-button uk-button-default">SZUKAJ</button>
           </div>
