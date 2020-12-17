@@ -1,8 +1,8 @@
 <template>
     <div class="uk-container">
-        <ContactDetails :id="id" @gotContact="loadContact"/>
-        <ContractorDetails :id="contact.departament.contractor_id" :hideButtons="true" v-if="contact"/>        
-        <DepartamentsSmallList :id="id" :title="'Siedziba Kontaktu'" :info="departaments" @pageChanged="loadDepartaments"/>
+        <ContactDetails :id="id" @gotContact="loadContact" />
+        <DepartamentsDetails :id="id" @gotDepartament="loadDepartament" :hideButtons="true"/>
+        <ContractorDetails :id="contact.departament.contractor_id" :hideButtons="true" v-if="contact"/>
     </div>
 </template>
 
@@ -10,7 +10,7 @@
 import axios from "axios";
 import ContactDetails from "../../components/contacts/Details";
 import ContractorDetails from "../../components/contractors/Details";
-import DepartamentsSmallList from "../../components/departaments/SmallList";
+import DepartamentsDetails from "../../components/departaments/Details";
 
 export default {
     data () {
@@ -20,8 +20,8 @@ export default {
     },
     components: {
         ContactDetails,
-        ContractorDetails,
-        DepartamentsSmallList
+        ContractorDetails,        
+        DepartamentsDetails,
 
     },
     methods: {
@@ -36,6 +36,9 @@ export default {
       );
       this.departaments = response.data;
     },
+     loadDepartament:function(data){
+            this.departament=data;
+        }
     },
     beforeMount() {
     this.loadDepartaments();

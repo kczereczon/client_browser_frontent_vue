@@ -9,7 +9,11 @@
           type="text"
           >{{ cell }}</vk-button
         ></vk-table-column
-      >
+      ><vk-table-column
+        class="uk-width-large"
+        title="Miasto"
+        cell="city"
+      ></vk-table-column>
     </vk-table>
     <vk-pagination
       :page.sync="page"

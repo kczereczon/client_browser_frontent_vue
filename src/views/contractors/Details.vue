@@ -1,8 +1,8 @@
 <template>
   <div class="uk-container">
     <ContractorDetails :id="id" />
-    <ContactSmallList :id="id" :title="'Kontakty Kontrahenta'" :info="contacts" @pageChanged="loadContacts"/>
-    <DepartamentsSmallList :id="id" :title="'Siedziby Kontrahenta'" :info="departaments" @pageChanged="loadDepartaments"/>
+    <ContactSmallList :id="id" :title="'Kontakty kontrahenta'" :info="contacts" @pageChanged="loadContacts"/>
+    <DepartamentsSmallList :id="id" :title="'Oddziały kontrahenta'" :info="departaments" @pageChanged="loadDepartaments"/>
   </div>
 </template>
 

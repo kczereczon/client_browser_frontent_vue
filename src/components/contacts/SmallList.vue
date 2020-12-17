@@ -2,13 +2,22 @@
   <div class="uk-card uk-margin-top uk-card-default uk-card-body">
     <div class="uk-card-title uk-text-left">{{ title }}</div>
     <vk-table :data="info.data" v-if="info.data" justified>
-      <vk-table-column class="uk-width-large" title="Nazwa" cell="name"
+      <vk-table-column class="uk-width-large" title="Imię" cell="name"
         ><vk-button
           slot-scope="{ cell, row }"
           @click="openDetails(row.id)"
           type="text"
           >{{ cell }}</vk-button
-        ></vk-table-column
+        >
+        </vk-table-column
+      ><vk-table-column class="uk-width-large" title="Nazwisko" cell="last_name"
+        ><vk-button
+          slot-scope="{ cell, row }"
+          @click="openDetails(row.id)"
+          type="text"
+          >{{ cell }}</vk-button
+        >
+        </vk-table-column
       >
     </vk-table>
     <vk-pagination
