@@ -4,18 +4,10 @@
     <vk-table :data="info.data" v-if="info.data" justified>
       <vk-table-column class="uk-width-large" title="Imię" cell="name"
         ><vk-button
-          slot-scope="{ cell, row }"
+          slot-scope="{ row }"
           @click="openDetails(row.id)"
           type="text"
-          >{{ cell }}</vk-button
-        >
-        </vk-table-column
-      ><vk-table-column class="uk-width-large" title="Nazwisko" cell="last_name"
-        ><vk-button
-          slot-scope="{ cell, row }"
-          @click="openDetails(row.id)"
-          type="text"
-          >{{ cell }}</vk-button
+          >{{ row.name }} {{ row.last_name }}</vk-button
         >
         </vk-table-column
       >
