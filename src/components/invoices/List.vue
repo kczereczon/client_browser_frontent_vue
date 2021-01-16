@@ -82,7 +82,7 @@ export default {
     loadInvoices: async function () {
       const params = { ...this.params };
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/invoices/" + this.id,
+        process.env.VUE_APP_API_SERVER+"/api/web/invoices/" + this.id,
         { params: params }
       );
       this.invoices = response.data;

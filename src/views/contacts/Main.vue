@@ -87,7 +87,7 @@ export default {
   methods: {
     loadContacts: async function (newPage) {
         const params = {...this.params, page: newPage};
-        const response = await axios.get("http://127.0.0.1:8000/api/web/contact", {params: params});
+        const response = await axios.get(process.env.VUE_APP_API_SERVER+"/api/web/contact", {params: params});
         this.info = response.data;
     },
     openEdit: function(id) {
@@ -99,7 +99,7 @@ export default {
       }
     },
     deleteContact: async function(id) {
-      await axios.delete("http://127.0.0.1:8000/api/web/contact/"+id);
+      await axios.delete(process.env.VUE_APP_API_SERVER+"/api/web/contact/"+id);
       this.loadContacts(this.page);
     },
     openCreate: function() {

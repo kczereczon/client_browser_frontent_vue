@@ -31,14 +31,14 @@ export default {
   methods: {
     getDepartament: async function () {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/departament/" + this.$route.params.id
+        process.env.VUE_APP_API_SERVER+"/api/web/departament/" + this.$route.params.id
       );
       this.departament = response.data;
     },
     onSubmit: async function (data) {
       try {
         const response = await axios.put(
-          "http://127.0.0.1:8000/api/web/departament/" + this.$route.params.id,
+          process.env.VUE_APP_API_SERVER+"/api/web/departament/" + this.$route.params.id,
           data
         );
         if (response.data) {

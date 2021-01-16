@@ -62,7 +62,7 @@ export default {
   methods: {
     loadConstructors: async function (newPage) {
         const params = {...this.params, page: newPage};
-        const response = await axios.get("http://127.0.0.1:8000/api/web/contractor", {params: params});
+        const response = await axios.get(process.env.VUE_APP_API_SERVER+"/api/web/contractor", {params: params});
         this.info = response.data;
     },
     openEdit: function(id) {
@@ -74,7 +74,7 @@ export default {
       }
     },
     deleteContractor: async function(id) {
-      await axios.delete("http://127.0.0.1:8000/api/web/contractor/"+id);
+      await axios.delete(process.env.VUE_APP_API_SERVER+"/api/web/contractor/"+id);
       this.loadConstructors(this.page);
     },
     openCreate: function() {

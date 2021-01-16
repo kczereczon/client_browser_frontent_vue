@@ -91,7 +91,7 @@ export default {
   methods: {
     getContact: async function () {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/contact/" + this.id
+        process.env.VUE_APP_API_SERVER+"/api/web/contact/" + this.id
       );
       this.contact = response.data;
       this.$emit("gotContact", response.data)
@@ -105,7 +105,7 @@ export default {
       }
     },
     deleteContact: async function(id) {
-      await axios.delete("http://127.0.0.1:8000/api/web/contact/"+id);
+      await axios.delete(process.env.VUE_APP_API_SERVER+"/api/web/contact/"+id);
       this.$router.push({name: "Contacts"});
     },
   },

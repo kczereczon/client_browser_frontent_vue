@@ -31,7 +31,7 @@ export default {
         loadDepartaments: async function (newPage) {
       const params = { ...this.params, page: newPage };
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/departament/contact/" + this.id,
+        process.env.VUE_APP_API_SERVER+"/api/web/departament/contact/" + this.id,
         { params: params }
       );
       this.departaments = response.data;

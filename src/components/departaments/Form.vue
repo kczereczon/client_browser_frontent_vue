@@ -187,7 +187,7 @@ export default {
     },
     getContractors: async function(){
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/contractor/");
+        process.env.VUE_APP_API_SERVER+"/api/contractor/");
       this.contractors = response.data;
     }
   },

@@ -81,7 +81,7 @@ export default {
   methods: {
     getContractor: async function () {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/web/contractor/" + this.id
+        process.env.VUE_APP_API_SERVER+"/api/web/contractor/" + this.id
       );
       this.contractor = response.data;
     },
@@ -94,7 +94,7 @@ export default {
       }
     },
     deleteContractor: async function(id) {
-      await axios.delete("http://127.0.0.1:8000/api/web/contractor/"+id);
+      await axios.delete(process.env.VUE_APP_API_SERVER+"/api/web/contractor/"+id);
       this.$router.push({name: "Contractors"});
     },
   },

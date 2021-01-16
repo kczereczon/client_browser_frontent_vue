@@ -47,7 +47,7 @@ export default {
       console.log(this.departament);
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/web/departament/",
+          process.env.VUE_APP_API_SERVER+"/api/web/departament/",
           {
             departament: this.departament,
             contact: this.contact,
